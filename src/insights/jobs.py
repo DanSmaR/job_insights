@@ -22,7 +22,7 @@ def read(path: str) -> List[Dict]:
         print(f"file {path} does not exist")
     with open(path, encoding="utf-8") as file:
         file_data = csv.DictReader(file, delimiter=",", quotechar='"')
-    return list(file_data)
+        return list(file_data)
 
 
 def get_unique_job_types(path: str) -> List[str]:
