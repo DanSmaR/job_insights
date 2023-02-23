@@ -23,6 +23,7 @@ def read(path: str) -> List[Dict]:
             return list(file_data)
     except IsADirectoryError:
         print('Wrong path name')
+        return None
 
 
 def get_unique_job_types(path: str) -> List[str]:
@@ -40,7 +41,9 @@ def get_unique_job_types(path: str) -> List[str]:
     list
         List of unique job types
     """
-    raise NotImplementedError
+    jobs_data = read(path)
+    job_types = set(map(lambda job: job["job_type"], jobs_data))
+    return list(job_types)
 
 
 def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
