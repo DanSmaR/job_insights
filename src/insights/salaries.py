@@ -113,4 +113,13 @@ def filter_by_salary_range(
     list
         Jobs whose salary range contains `salary`
     """
-    raise NotImplementedError
+    def check_salary_matches(job: Dict) -> bool:
+        try:
+            return matches_salary_range(job, salary)
+        except ValueError:
+            return False
+    return [
+        job
+        for job in jobs
+        if check_salary_matches(job)
+    ]
